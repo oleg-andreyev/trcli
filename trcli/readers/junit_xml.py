@@ -169,7 +169,7 @@ class JunitParser(FileParser):
                             title=TestRailCaseFieldsOptimizer.extract_last_words(case_name, TestRailCaseFieldsOptimizer.MAX_TESTCASE_TITLE_LENGTH),
                             case_id=case_id,
                             result=result,
-                            custom_automation_id=automation_id,
+                            custom_case_automation_id=automation_id,
                             case_fields=case_fields_dict
                         )
                     )

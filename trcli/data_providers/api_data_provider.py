@@ -193,7 +193,7 @@ class ApiDataProvider:
                 "case_id": 1,
                 "section_id": 1
                 "title": "testCase1",
-                "custom_automation_id": "className.testCase1"
+                "custom_case_automation_id": "className.testCase1"
             }
 
         """
@@ -204,7 +204,7 @@ class ApiDataProvider:
                     case
                     for sublist in testcases
                     for case in sublist
-                    if case.custom_automation_id == case_updater["custom_automation_id"]
+                    if case.custom_case_automation_id == case_updater["custom_case_automation_id"]
                 ),
                 None,
             )

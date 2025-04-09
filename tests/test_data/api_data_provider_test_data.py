@@ -32,7 +32,7 @@ post_section_bodies = [
 ]
 
 post_cases_bodies = [
-    {"section_id": 12345, "title": "testCase2", "custom_automation_id": "className.testCase2abc"}
+    {"section_id": 12345, "title": "testCase2", "custom_case_automation_id": "className.testCase2abc"}
 ]
 
 post_run_bodies = {

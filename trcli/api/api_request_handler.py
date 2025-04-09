@@ -40,7 +40,7 @@ class ApiRequestHandler:
 
     def check_automation_id_field(self, project_id: int) -> Union[str, None]:
         """
-        Checks if the automation_id field (custom_automation_id) is available for the project
+        Checks if the automation_id field (custom_case_automation_id) is available for the project
         :param project_id: the id of the project
         :return: error message
         """
@@ -48,7 +48,7 @@ class ApiRequestHandler:
         if not response.error_message:
             fields: List = response.response_text
             automation_id_field = next(
-                filter(lambda x: x["system_name"] == "custom_automation_id", fields),
+                filter(lambda x: x["system_name"] == "custom_case_automation_id", fields),
                 None
             )
             if automation_id_field:
@@ -294,19 +294,19 @@ class ApiRequestHandler:
         if self.environment.case_matcher == MatchersParser.AUTO:
             test_cases_by_aut_id = {}
             for case in returned_cases:
-                aut_case_id = case["custom_automation_id"]
-                aut_case_id = aut_case_id if not aut_case_id else html.unescape(case["custom_automation_id"])
+                aut_case_id = case["custom_case_automation_id"]
+                aut_case_id = aut_case_id if not aut_case_id else html.unescape(case["custom_case_automation_id"])
                 test_cases_by_aut_id[aut_case_id] = case
             test_case_data = []
             for section in self.suites_data_from_provider.testsections:
                 for test_case in section.testcases:
-                    if test_case.custom_automation_id in test_cases_by_aut_id.keys():
-                        case = test_cases_by_aut_id[test_case.custom_automation_id]
+                    if test_case.custom_case_automation_id in test_cases_by_aut_id.keys():
+                        case = test_cases_by_aut_id[test_case.custom_case_automation_id]
                         test_case_data.append({
                             "case_id": case["id"],
                             "section_id": case["section_id"],
                             "title": case["title"],
-                            "custom_automation_id": test_case.custom_automation_id
+                            "custom_case_automation_id": test_case.custom_case_automation_id
                         })
                     else:
                         missing_cases_number += 1
@@ -628,8 +628,8 @@ class ApiRequestHandler:
 
     def _add_case_and_update_data(self, case: TestRailCase) -> APIClientResult:
         case_body = case.to_dict()
-        if self.environment.case_matcher != MatchersParser.AUTO and "custom_automation_id" in case_body:
-            case_body.pop("custom_automation_id")
+        if self.environment.case_matcher != MatchersParser.AUTO and "custom_case_automation_id" in case_body:
+            case_body.pop("custom_case_automation_id")
         response = self.client.send_post(f"add_case/{case_body.pop('section_id')}", case_body)
         if response.status_code == 200:
             case.case_id = response.response_text["id"]

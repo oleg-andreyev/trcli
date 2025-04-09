@@ -282,7 +282,7 @@ class TestApiRequestHandler:
             "id": 12345,
             "suite_id": 4,
             "name": "Passed test",
-            "custom_automation_id": "className.testCase"
+            "custom_case_automation_id": "className.testCase"
         }
 
         mocked_response_for_case_1 = {
@@ -290,7 +290,7 @@ class TestApiRequestHandler:
             "suite_id": 4,
             "section_id": 1234,
             "title": "testCase2",
-            "custom_automation_id": "className.testCase"
+            "custom_case_automation_id": "className.testCase"
         }
 
         mocked_response_for_case_2 = {
@@ -298,7 +298,7 @@ class TestApiRequestHandler:
             "suite_id": 4,
             "section_id": 12345,
             "title": "testCase3",
-            "custom_automation_id": "className.testCase"
+            "custom_case_automation_id": "className.testCase"
         }
 
         requests_mock.post(
@@ -431,8 +431,8 @@ class TestApiRequestHandler:
                 "prev": None,
             },
             "cases": [
-                {"title": "testCase1", "custom_automation_id": "Skipped test.testCase1", "id": 1, "section_id": 1234},
-                {"title": "testCase2", "custom_automation_id": "Skipped test.testCase2", "id": 2, "section_id": 1234}
+                {"title": "testCase1", "custom_case_automation_id": "Skipped test.testCase1", "id": 1, "section_id": 1234},
+                {"title": "testCase2", "custom_case_automation_id": "Skipped test.testCase2", "id": 2, "section_id": 1234}
             ],
         }
         requests_mock.get(
@@ -447,13 +447,13 @@ class TestApiRequestHandler:
             case_data=[
                 {
                     "case_id": 1,
-                    "custom_automation_id": "Skipped test.testCase1",
+                    "custom_case_automation_id": "Skipped test.testCase1",
                     "section_id": 1234,
                     "title": "testCase1"
                 },
                 {
                     "case_id": 2,
-                    "custom_automation_id":
+                    "custom_case_automation_id":
                     "Skipped test.testCase2",
                     "section_id": 1234,
                     "title": "testCase2"
@@ -476,14 +476,14 @@ class TestApiRequestHandler:
                 "prev": None,
             },
             "cases": [
-                {"title": "testCase1", "custom_automation_id": "Skipped test.testCase1", "id": 1, "section_id": 1234},
-                {"title": "testCase2", "custom_automation_id": "Skipped test.testCase2", "id": 2, "section_id": 1234}
+                {"title": "testCase1", "custom_case_automation_id": "Skipped test.testCase1", "id": 1, "section_id": 1234},
+                {"title": "testCase2", "custom_case_automation_id": "Skipped test.testCase2", "id": 2, "section_id": 1234}
             ],
         }
         mocked_response_page_2 = {
             "_links": {"next": None, "prev": None},
             "cases": [
-                {"title": "testCase3", "custom_automation_id": "Passed test.testCase3", "id": 1, "section_id": 2},
+                {"title": "testCase3", "custom_case_automation_id": "Passed test.testCase3", "id": 1, "section_id": 2},
             ],
         }
         requests_mock.get(
@@ -501,19 +501,19 @@ class TestApiRequestHandler:
             case_data=[
                 {
                     "case_id": 1,
-                    "custom_automation_id": "Skipped test.testCase1",
+                    "custom_case_automation_id": "Skipped test.testCase1",
                     "section_id": 1234,
                     "title": "testCase1"
                 },
                 {
                     "case_id": 2,
-                    "custom_automation_id": "Skipped test.testCase2",
+                    "custom_case_automation_id": "Skipped test.testCase2",
                     "section_id": 1234,
                     "title": "testCase2"
                 },
                 {
                     "case_id": 1,
-                    "custom_automation_id": "Passed test.testCase3",
+                    "custom_case_automation_id": "Passed test.testCase3",
                     "section_id": 2,
                     "title": "testCase3"
                 }
@@ -611,7 +611,7 @@ class TestApiRequestHandler:
             "suite_id": 4,
             "section_id": 1234,
             "title": "testCase2",
-            "custom_automation_id": "Skipped test.testCase2"
+            "custom_case_automation_id": "Skipped test.testCase2"
         }
 
         mocked_response_for_case_2 = {
@@ -619,7 +619,7 @@ class TestApiRequestHandler:
             "suite_id": 4,
             "section_id": 12345,
             "title": "testCase3",
-            "custom_automation_id": "Passed test.testCase3"
+            "custom_case_automation_id": "Passed test.testCase3"
         }
 
         requests_mock.post(
@@ -751,7 +751,7 @@ class TestApiRequestHandler:
             "section_id": 1234,
             "title": "testCase2",
             "estimate": "30s",
-            "custom_automation_id": "Skipped test.testCase2"
+            "custom_case_automation_id": "Skipped test.testCase2"
         }
 
         requests_mock.post(

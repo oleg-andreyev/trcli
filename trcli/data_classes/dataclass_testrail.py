@@ -31,8 +31,8 @@ class TestRailResult:
     status_id: int = field(default=None, skip_if_default=True)
     comment: str = field(default=None, skip_if_default=True)
     version: str = field(default=None, skip_if_default=True)
-    elapsed: str = field(default=None, skip_if_default=True)
-    defects: str = field(default=None, skip_if_default=True)
+    elapsed: str = field(default(None, skip_if_default=True)
+    defects: str = field(default(None, skip_if_default=True)
     assignedto_id: int = field(default=None, skip_if_default=True)
     attachments: Optional[List[str]] = field(default_factory=list, skip_if_default=True)
     result_fields: Optional[dict] = field(default_factory=dict, skip=True)
@@ -134,7 +134,7 @@ class TestRailCase:
     refs: str = field(default=None, skip_if_default=True)
     case_fields: Optional[dict] = field(default_factory=dict, skip=True)
     result: TestRailResult = field(default=None, metadata={"serde_skip": True})
-    custom_automation_id: str = field(default=None, skip_if_default=True)
+    custom_case_automation_id: str = field(default=None, skip_if_default=True)
     # Uncomment if we want to support separated steps in cases in the future
     # custom_steps_separated: List[TestRailSeparatedStep] = field(default_factory=list, skip_if_default=True)
 
@@ -151,8 +151,8 @@ class TestRailCase:
                 class_name=self.__class__.__name__,
                 reason="Title is empty.",
             )
-        if self.custom_automation_id:
-            self.custom_automation_id = self.custom_automation_id.strip()
+        if self.custom_case_automation_id:
+            self.custom_case_automation_id = self.custom_case_automation_id.strip()
 
     def add_global_case_fields(self, case_fields: dict) -> None:
         """Add global case fields without overriding the existing case-specific fields
